@@ -1,5 +1,5 @@
 import Home from "./HomePage"
-import Footer from "./components/Footer"
+// import Footer from "./components/Footer"
 
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
      <Home/>
-     <Footer/>
+     {/* <Footer/> */}
     </>
   )
 }

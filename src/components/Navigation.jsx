@@ -1,7 +1,11 @@
-// Navigation Component
+// Navigation Component - Fully Responsive
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import personalInfo from "../data/personalInfo";
 
 const Navigation = ({ currentPage, setCurrentPage }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'publications', label: 'Publications' },
@@ -9,17 +13,26 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
     { id: 'cv', label: 'CV' }
   ];
 
+  const handleMenuClick = (itemId) => {
+    setCurrentPage(itemId);
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="w-full bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <h1 className="text-xl font-bold text-gray-800">{personalInfo.name}</h1>
-          <div className="flex space-x-8">
+        <div className="flex items-center justify-between h-14 sm:h-16">
+          <h1 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 truncate">
+            {personalInfo.name}
+          </h1>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-6 lg:space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => setCurrentPage(item.id)}
-                className={`text-sm font-medium transition-colors duration-200 ${
+                className={`text-sm font-medium transition-colors duration-200 py-2 ${
                   currentPage === item.id
                     ? 'text-blue-600 border-b-2 border-blue-600'
                     : 'text-gray-600 hover:text-blue-600'
@@ -29,11 +42,40 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
               </button>
             ))}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 text-gray-600 hover:text-gray-900 transition-colors duration-200"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden border-t border-gray-200 bg-white">
+            <div className="py-2 space-y-1">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handleMenuClick(item.id)}
+                  className={`block w-full text-left px-4 py-3 text-sm font-medium transition-colors duration-200 ${
+                    currentPage === item.id
+                      ? 'text-blue-600 bg-blue-50 border-r-2 border-blue-600'
+                      : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
 };
-
 
 export default Navigation;
