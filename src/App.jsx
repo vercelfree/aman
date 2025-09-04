@@ -1,5 +1,5 @@
-import Footer from "./components/footer"
 import Home from "./HomePage"
+import Footer from "./components/Footer"
 
 
 function App() {
