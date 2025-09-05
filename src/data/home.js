@@ -6,7 +6,7 @@ const homeData = {
   ],
   education: {
     degree: "B.Sc. in Computer Science and Engineering",
-    university: "University of Dhaka",
+    university: "North South University",
     period: "2019 - 2023",
     grade: "CGPA: 3.75/4.00"
   },

@@ -1,5 +1,5 @@
 // Home.jsx Component - Fully Responsive
-import { Mail, Github, BookOpen, ExternalLink, Calendar, FileText, Award, MapPin, Phone, User, Briefcase, GraduationCap } from 'lucide-react';
+import { Calendar, FileText, User, GraduationCap } from 'lucide-react';
 import homeData from "../data/home";
 import personalInfo from "../data/personalInfo";
 import newsData from "../data/news";
@@ -9,10 +9,6 @@ const HomePage = () => {
     <div className="space-y-6 sm:space-y-8">
       {/* About Me Section */}
       <div>
-        <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center">
-          <User className="mr-2" size={18} />
-          About Me
-        </h3>
         {homeData.about.map((paragraph, index) => (
           <p key={index} className="text-gray-700 leading-relaxed text-justify mb-3 sm:mb-4 text-sm sm:text-base">
             {paragraph}

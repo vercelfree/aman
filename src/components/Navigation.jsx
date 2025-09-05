@@ -32,16 +32,24 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
               <button
                 key={item.id}
                 onClick={() => setCurrentPage(item.id)}
-                className={`text-sm font-medium transition-colors duration-200 py-2 ${
-                  currentPage === item.id
-                    ? 'text-blue-600 border-b-2 border-blue-600'
-                    : 'text-gray-600 hover:text-blue-600'
-                }`}
+                className={`relative group text-sm font-medium py-2 transition-colors duration-200
+                  ${currentPage === item.id ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}
+                `}
               >
                 {item.label}
+                {/* Animated underline */}
+                <span
+                  className={`absolute left-1/2 bottom-0 h-0.5 transition-all duration-300 transform -translate-x-1/2
+                    ${currentPage === item.id 
+                      ? 'bg-blue-600 w-full' 
+                      : 'bg-red-500 w-0 group-hover:w-full'}
+                  `}
+                />
               </button>
             ))}
           </div>
+
+
 
           {/* Mobile Menu Button */}
           <button

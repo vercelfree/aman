@@ -171,18 +171,7 @@ const LeftSidebar = () => {
           </p>
         </div>
 
-        {/* Contact Info */}
-        <div className="space-y-2 text-center px-2">
-          <div className="flex items-center justify-center space-x-2 text-gray-600 text-sm">
-            <MapPin size={14} className="flex-shrink-0" />
-            <span className="break-words">{personalInfo.contact.location}</span>
-          </div>
-          <div className="flex items-center justify-center space-x-2 text-gray-600 text-sm">
-            <Phone size={14} className="flex-shrink-0" />
-            <span>{personalInfo.contact.phone}</span>
-          </div>
-        </div>
-
+        
         {/* Social Links - Vertical Layout */}
         <div className="space-y-3 px-2">
           {personalInfo.socialLinks.map((link, index) => {

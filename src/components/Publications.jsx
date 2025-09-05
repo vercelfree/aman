@@ -9,18 +9,6 @@ const PublicationsPage = () => {
     <div className="space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Publications</h2>
-        <div className="bg-blue-50 rounded-lg p-3 w-full sm:w-auto">
-          <div className="grid grid-cols-2 gap-2 sm:gap-4 text-xs sm:text-sm">
-            <div className="text-center">
-              <div className="font-bold text-blue-600 text-sm sm:text-base">{publicationsData.stats.totalPapers}</div>
-              <div className="text-gray-600">Total Papers</div>
-            </div>
-            <div className="text-center">
-              <div className="font-bold text-blue-600 text-sm sm:text-base">{publicationsData.stats.citations}</div>
-              <div className="text-gray-600">Citations</div>
-            </div>
-          </div>
-        </div>
       </div>
       
       <div className="space-y-4 sm:space-y-6">
