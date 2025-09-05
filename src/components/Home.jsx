@@ -1,8 +1,9 @@
 // Home.jsx Component - Fully Responsive
-import { Calendar, FileText, User, GraduationCap } from 'lucide-react';
+import { Calendar, FileText, User,Briefcase, GraduationCap } from 'lucide-react';
 import homeData from "../data/home";
 import personalInfo from "../data/personalInfo";
 import newsData from "../data/news";
+import experienceData from '../data/experience'; 
 
 const HomePage = () => {
   return (
@@ -28,6 +29,20 @@ const HomePage = () => {
           <p className="text-gray-600 text-xs sm:text-sm">{homeData.education.period}</p>
           <p className="text-gray-600 text-xs sm:text-sm">{homeData.education.grade}</p>
         </div>
+      </div>
+      <div>
+        <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4 flex items-center">
+        <Briefcase className="mr-2" size={18} />
+        Work Experience
+      </h3>
+        {experienceData.map((exp, index) => (
+          <div key={index} className="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4 mb-3">
+            <h4 className="font-semibold text-gray-800 text-sm sm:text-base">{exp.title}</h4>
+            <p className="text-blue-600 font-medium text-sm sm:text-base">{exp.course}</p>
+            <p className="text-gray-600 text-xs sm:text-sm">{exp.period}</p>
+            <p className="text-gray-600 text-xs sm:text-sm">{exp.professors}</p>
+          </div>
+        ))}
       </div>
 
       {/* Research Interests */}
