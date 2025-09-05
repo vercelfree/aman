@@ -10,7 +10,7 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
     { id: 'home', label: 'Home' },
     { id: 'publications', label: 'Publications' },
     { id: 'news', label: 'News' },
-    { id: 'cv', label: 'Resume', isDownload: true, href: '/cv.pdf' } // 👈 CV item with download flag
+    { id: 'cv', label: 'Resume', isPreview: true, href: '/cv.pdf' } // 👈 CV opens in preview
   ];
 
   const handleMenuClick = (itemId) => {
@@ -29,11 +29,12 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6 lg:space-x-8">
             {navItems.map((item) =>
-              item.isDownload ? (
+              item.isPreview ? (
                 <a
                   key={item.id}
                   href={item.href}
-                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="relative group text-sm font-medium py-2 text-gray-600 hover:text-blue-600 transition-colors duration-200"
                 >
                   {item.label}
@@ -77,11 +78,12 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
           <div className="md:hidden border-t border-gray-200 bg-white">
             <div className="py-2 space-y-1">
               {navItems.map((item) =>
-                item.isDownload ? (
+                item.isPreview ? (
                   <a
                     key={item.id}
                     href={item.href}
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full text-left px-4 py-3 text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50"
                   >
                     {item.label}
