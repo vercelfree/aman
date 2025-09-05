@@ -5,12 +5,12 @@ import personalInfo from "../data/personalInfo";
 
 const Navigation = ({ currentPage, setCurrentPage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'publications', label: 'Publications' },
     { id: 'news', label: 'News' },
-    { id: 'cv', label: 'CV' }
+    { id: 'cv', label: 'Resume', isDownload: true, href: '/cv.pdf' } // 👈 CV item with download flag
   ];
 
   const handleMenuClick = (itemId) => {
@@ -25,31 +25,42 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
           <h1 className="text-base sm:text-lg md:text-xl font-bold text-gray-800 truncate">
             {personalInfo.name}
           </h1>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6 lg:space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => setCurrentPage(item.id)}
-                className={`relative group text-sm font-medium py-2 transition-colors duration-200
-                  ${currentPage === item.id ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}
-                `}
-              >
-                {item.label}
-                {/* Animated underline */}
-                <span
-                  className={`absolute left-1/2 bottom-0 h-0.5 transition-all duration-300 transform -translate-x-1/2
-                    ${currentPage === item.id 
-                      ? 'bg-blue-600 w-full' 
-                      : 'bg-red-500 w-0 group-hover:w-full'}
+            {navItems.map((item) =>
+              item.isDownload ? (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  download
+                  className="relative group text-sm font-medium py-2 text-gray-600 hover:text-blue-600 transition-colors duration-200"
+                >
+                  {item.label}
+                  <span
+                    className="absolute left-1/2 bottom-0 h-0.5 bg-red-500 w-0 group-hover:w-full transition-all duration-300 transform -translate-x-1/2"
+                  />
+                </a>
+              ) : (
+                <button
+                  key={item.id}
+                  onClick={() => setCurrentPage(item.id)}
+                  className={`relative group text-sm font-medium py-2 transition-colors duration-200
+                    ${currentPage === item.id ? 'text-blue-600' : 'text-gray-600 hover:text-blue-600'}
                   `}
-                />
-              </button>
-            ))}
+                >
+                  {item.label}
+                  <span
+                    className={`absolute left-1/2 bottom-0 h-0.5 transition-all duration-300 transform -translate-x-1/2
+                      ${currentPage === item.id
+                        ? 'bg-blue-600 w-full'
+                        : 'bg-red-500 w-0 group-hover:w-full'}
+                    `}
+                  />
+                </button>
+              )
+            )}
           </div>
-
-
 
           {/* Mobile Menu Button */}
           <button
@@ -65,19 +76,30 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-gray-200 bg-white">
             <div className="py-2 space-y-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleMenuClick(item.id)}
-                  className={`block w-full text-left px-4 py-3 text-sm font-medium transition-colors duration-200 ${
-                    currentPage === item.id
-                      ? 'text-blue-600 bg-blue-50 border-r-2 border-blue-600'
-                      : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) =>
+                item.isDownload ? (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    download
+                    className="block w-full text-left px-4 py-3 text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <button
+                    key={item.id}
+                    onClick={() => handleMenuClick(item.id)}
+                    className={`block w-full text-left px-4 py-3 text-sm font-medium transition-colors duration-200 ${
+                      currentPage === item.id
+                        ? 'text-blue-600 bg-blue-50 border-r-2 border-blue-600'
+                        : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                )
+              )}
             </div>
           </div>
         )}

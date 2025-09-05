@@ -78,11 +78,7 @@
 
 
 // Left Sidebar Component - Mobile Horizontal Layout
-import personalInfo from "../data/personalInfo";
-import {
-  MapPin,
-  Phone,
-} from "lucide-react";
+import personalInfo from "../data/personalInfo";;
 
 const LeftSidebar = () => {
   return (
@@ -112,16 +108,7 @@ const LeftSidebar = () => {
             </p>
             
             {/* Contact Info */}
-            <div className="space-y-1">
-              <div className="flex items-center space-x-2 text-gray-600 text-xs">
-                <MapPin size={12} className="flex-shrink-0" />
-                <span className="break-words">{personalInfo.contact.location}</span>
-              </div>
-              <div className="flex items-center space-x-2 text-gray-600 text-xs">
-                <Phone size={12} className="flex-shrink-0" />
-                <span>{personalInfo.contact.phone}</span>
-              </div>
-            </div>
+        
           </div>
         </div>
 

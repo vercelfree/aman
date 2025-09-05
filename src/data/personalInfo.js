@@ -1,6 +1,12 @@
 import { SiGooglescholar, SiLinkedin, SiGithub } from 'react-icons/si';
 import { MdEmail } from 'react-icons/md';
 
+
+
+
+
+
+
 const personalInfo = {
   name: "Mohammed Aman Bhuiyan",
   title: "Research Assistant",
@@ -41,3 +47,8 @@ const personalInfo = {
 
 
 export default personalInfo;
+
+
+
+
+
